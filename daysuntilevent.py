@@ -6,17 +6,16 @@ import datetime
 
 
 # define a number of methods
-
-print("----------------")
-print("Calculate Date Difference")
-print("----------------")
-print()
+def header():
+    print("-------------------------")
+    print("Calculate Date Difference")
+    print("-------------------------")
+    print()
 
 
 # getting user input for birthday , x , event
 
 def get_birthday():
-    print("When were you born?", end="")
     year = int(input("What year were you born in?:"))
     month = int(input("What month were you born in?:"))
     day = int(input("What day were you born in?:"))
@@ -26,19 +25,18 @@ def get_birthday():
 
 # calculating
 
-
-def compare(exisitingdate, currentdate):
-    currentyear = datetime.date(
-        currentdate.year, currentdate.month, currentdate.day)
-    dt = exisitingdate - currentdate
+def compare(original_date, target_date):
+    thisyear = datetime.date(original_date.year, original_date.month, original_date.day)
+    dt = thisyear- target_date
     return dt.days
+
 
 # output to screen
 
 
 def printoutput(days):
     if days < 0:
-        print("You had your birthday already")
+        print("You had your birthdate {} days ago".format(-days))
     elif days > 0:
         print("You birthday is in {} days".format(days))
     else:
@@ -48,11 +46,13 @@ def printoutput(days):
 # define a main method
 
 def main():
-   # header()
+    header()
     existingdate = get_birthday()
-    today = datetime.date.today
-    print(finaldate)
+    print(str(existingdate))
+    today = datetime.date.today()
+    print(str(today))
+    numofdays = compare(existingdate,today)
+    print(str(numofdays))
+    printoutput(numofdays)
 
 main()
-finaldate = get_birthday()
-print(finaldate)
